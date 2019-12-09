@@ -5,8 +5,7 @@ public enum SuitValue { Diamonds, Clubs, Hearts, Spades };
 
 public class Card
 {
-	
-	public FaceValue Face { get; private set; }
+    public FaceValue Face { get; private set; }
     public SuitValue Suit { get; private set; }
 
     public Card(SuitValue suit, FaceValue face)
@@ -24,27 +23,28 @@ public class Card
 
 public class Deck
 {
-	private Card[] deck;
+    private Card[] deck;
     private Random random = new Random();
 
     public Deck()
     {
-   		var suits = Enum.GetNames(typeof(SuitValue)).Length;
+   	var suits = Enum.GetNames(typeof(SuitValue)).Length;
         var faces = Enum.GetNames(typeof(FaceValue)).Length;
 
          int deckSize = suits * faces;
          deck = new Card[deckSize];
 
-		 int i = 0;
+	int i = 0;
         
-		foreach (SuitValue Suit in Enum.GetValues(typeof(SuitValue)))
+	foreach (SuitValue Suit in Enum.GetValues(typeof(SuitValue)))
         {
-        	foreach (FaceValue Face in Enum.GetValues(typeof(FaceValue)))
+            foreach (FaceValue Face in Enum.GetValues(typeof(FaceValue)))
             {
             	Card card = new Card(Suit, Face);
                 deck[i++] = card;
              }
         }
+    }
 }
 public class Program
 {
